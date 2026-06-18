@@ -1,0 +1,3 @@
+Min Bipolar Guide v11
+Cache: min-bipolar-guide-v11-2026-06-18-update-force
+Service worker: skipWaiting + clients.claim + old cache deletion + network-first index.html

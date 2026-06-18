@@ -3,11 +3,17 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <meta name="theme-color" content="#21435b" />
+  <meta name="theme-color" content="#0B2A52" />
   <meta name="description" content="En enkel guide til bipolar lidelse for patienter og pårørende." />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="apple-mobile-web-app-title" content="Min Bipolar Guide" />
   <title>Min Bipolar Guide</title>
-  <link rel="manifest" href="manifest.webmanifest" />
-  <link rel="apple-touch-icon" href="icons/icon-192.png" />
+  <link rel="manifest" href="manifest.webmanifest?v=11" />
+  <link rel="icon" href="favicon.ico?v=11" />
+  <link rel="icon" type="image/png" sizes="32x32" href="icons/icon-32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="icons/icon-16.png" />
+  <link rel="apple-touch-icon" href="icons/icon-180.png?v=11" />
   <style>
     :root{
       --bg:#f6f3ea; --card:#fffdf7; --text:#18242c; --muted:#5e6b70; --blue:#21435b; --blue2:#315f76; --green:#6f977d; --green2:#dceadb; --yellow:#f2c86b; --red:#b85c5c; --line:#e4ded0; --shadow:0 14px 35px rgba(25,38,45,.10); --radius:22px;
@@ -180,7 +186,33 @@
     let deferredPrompt; const installBtn=document.getElementById('installBtn');
     window.addEventListener('beforeinstallprompt',e=>{e.preventDefault(); deferredPrompt=e; installBtn.style.display='block';});
     installBtn.addEventListener('click',async()=>{if(!deferredPrompt)return; deferredPrompt.prompt(); await deferredPrompt.userChoice; deferredPrompt=null; installBtn.style.display='none';});
-    if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js'));}
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', async () => {
+        try {
+          const reg = await navigator.serviceWorker.register('./sw.js?v=11');
+          reg.update();
+
+          reg.addEventListener('updatefound', () => {
+            const newWorker = reg.installing;
+            if (!newWorker) return;
+            newWorker.addEventListener('statechange', () => {
+              if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                newWorker.postMessage({ type: 'SKIP_WAITING' });
+              }
+            });
+          });
+
+          navigator.serviceWorker.addEventListener('controllerchange', () => {
+            if (!window.__reloadedForUpdate) {
+              window.__reloadedForUpdate = true;
+              window.location.reload();
+            }
+          });
+        } catch (err) {
+          console.warn('Service worker kunne ikke registreres', err);
+        }
+      });
+    }
   </script>
 </body>
 </html>
