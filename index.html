@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="da">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#21435b" />
+  <meta name="description" content="En enkel guide til bipolar lidelse for patienter og pårørende." />
+  <title>Min Bipolar Guide</title>
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="apple-touch-icon" href="icons/icon-192.png" />
+  <style>
+    :root{
+      --bg:#f6f3ea; --card:#fffdf7; --text:#18242c; --muted:#5e6b70; --blue:#21435b; --blue2:#315f76; --green:#6f977d; --green2:#dceadb; --yellow:#f2c86b; --red:#b85c5c; --line:#e4ded0; --shadow:0 14px 35px rgba(25,38,45,.10); --radius:22px;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;min-height:100%;background:radial-gradient(circle at top left,#e7f0e5 0,#f6f3ea 34%,#f6f3ea 100%);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.45}
+    body{padding-bottom:88px}
+    .app{max-width:920px;margin:0 auto;padding:14px 12px 0}
+    .view{display:none;animation:fade .18s ease}.view.active{display:block}@keyframes fade{from{opacity:.2;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+    .section{background:rgba(255,253,247,.84);border:1px solid var(--line);border-radius:28px;padding:18px 14px;box-shadow:0 8px 24px rgba(25,38,45,.05);margin-bottom:14px}.section h2{font-size:1.55rem;margin:0 0 8px}.lead{font-size:1.04rem;color:#35444a;margin:0 0 13px}.small{font-size:.9rem;color:var(--muted)}
+    .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}.tile,.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:0 9px 22px rgba(25,38,45,.06)}.tile{padding:16px;text-decoration:none;color:var(--text);display:block;min-height:125px;cursor:pointer}.tile:active{transform:scale(.99)}.tile .icon{font-size:2rem}.tile h2,.tile h3{font-size:1.05rem;margin:7px 0 5px}.tile p{font-size:.93rem;margin:0;color:var(--muted)}
+    .cards{display:grid;gap:10px}.card{padding:14px}.card h3{margin:0 0 7px;font-size:1.05rem}.card p{margin:0;color:#34434a}.split{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.list{display:grid;gap:9px;margin-top:10px}.item{display:flex;gap:10px;align-items:flex-start;background:#fff;border:1px solid var(--line);border-radius:16px;padding:12px}.item b{display:block}.item span:first-child{font-size:1.25rem;line-height:1}.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}.chip{background:#eef4ed;border:1px solid #cfdfcf;border-radius:999px;padding:8px 10px;font-weight:750;font-size:.92rem}.quote{background:#eaf1ea;border-left:6px solid var(--green);padding:14px;border-radius:18px;font-weight:750;margin-top:10px}.myth{display:grid;gap:8px}.bad,.good{border-radius:16px;padding:12px}.bad{background:#fff0ed;border:1px solid #f0c9bd}.good{background:#eef7ec;border:1px solid #cfe3cc}.faq button{width:100%;text-align:left;border:0;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px;font-weight:850;color:var(--text);font-size:1rem}.faq .answer{display:none;padding:0 12px 14px;color:#3b484d}.faq.open .answer{display:block}.phase{border-radius:18px;padding:14px;border:1px solid var(--line);background:#fff}.phase.green{border-left:8px solid var(--green)}.phase.yellow{border-left:8px solid var(--yellow)}.phase.red{border-left:8px solid var(--red)}
+     .topic-chooser{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:4px 0 14px}.topic-btn{border:1px solid var(--line);background:var(--card);border-radius:18px;padding:12px;text-align:left;color:var(--text);font-weight:850;box-shadow:0 7px 18px rgba(25,38,45,.05);display:flex;gap:10px;align-items:center}.topic-btn .emoji{font-size:1.45rem;line-height:1}.topic-btn small{display:block;color:var(--muted);font-weight:650;margin-top:2px}.topic-btn.active{background:#e5efe4;border-color:#bdd4bd;color:var(--blue)}.topic-current{display:flex;align-items:center;gap:10px;background:#fff;border:1px solid var(--line);border-radius:18px;padding:13px;margin:0 0 12px}.topic-current .emoji{font-size:1.7rem}.topic-current b{display:block}.topic-current span:last-child{color:var(--muted);font-size:.92rem}.subtabs{display:none}.subpanel{display:none}.subpanel.active{display:block}.learn-panel-source{display:none!important}
+    .nextbar{display:none!important;gap:9px;margin-top:13px}.nextbar button{flex:1;border:0;border-radius:16px;padding:12px 10px;font-weight:900;background:var(--blue);color:white}.nextbar button.secondary{background:#e5efe4;color:var(--blue)}
+    .bottomnav{position:fixed;left:0;right:0;bottom:0;z-index:20;background:rgba(255,253,247,.94);backdrop-filter:blur(14px);border-top:1px solid var(--line);padding:8px 8px max(8px,env(safe-area-inset-bottom));display:flex;justify-content:center}.navinner{display:grid;grid-template-columns:repeat(5,1fr);gap:4px;max-width:680px;width:100%}.navinner button{border:0;background:transparent;color:#526066;font-size:.73rem;font-weight:850;text-align:center;border-radius:14px;padding:7px 2px}.navinner button.active{background:#e5efe4;color:var(--blue)}.navinner span{display:block;font-size:1.15rem}.install{position:fixed;right:14px;bottom:88px;z-index:30;border:0;background:var(--blue);color:white;border-radius:999px;padding:11px 14px;font-weight:900;box-shadow:var(--shadow);display:none}
+
+
+    .home-hero{display:grid;grid-template-columns:1.02fr .98fr;gap:18px;align-items:center;padding:30px 8px 26px}.home-hero h1{font-size:clamp(2.5rem,7vw,4.2rem);line-height:1;margin:0 0 12px;letter-spacing:-.05em;color:#071b31}.home-hero h2{font-size:clamp(1.45rem,4.5vw,2.15rem);font-weight:800;margin:0 0 16px;color:#0f2134}.home-hero p{font-size:clamp(1.02rem,3.1vw,1.35rem);line-height:1.55;margin:0;color:#1f2b35;max-width:560px}.hero-art{display:flex;justify-content:center;align-items:center}.hero-art img{max-width:100%;height:auto;border-radius:28px;mix-blend-mode:multiply}.home-title{font-size:clamp(1.55rem,4.4vw,2.05rem);letter-spacing:-.03em;margin:18px 6px 14px;color:#071b31}.home-choice-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-bottom:18px}.home-card{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;min-height:220px;border:0;border-radius:26px;padding:28px 18px 64px;text-align:center;color:#111d2b;box-shadow:0 14px 32px rgba(20,31,39,.08);cursor:pointer;overflow:hidden}.home-card:active{transform:scale(.99)}.home-card.green{background:linear-gradient(135deg,#eef7ef,#fbfdf8)}.home-card.yellow{background:linear-gradient(135deg,#fff4d9,#fffaf0)}.home-card.rose{background:linear-gradient(135deg,#fff0f1,#fffafa)}.home-card.orange{background:linear-gradient(135deg,#fff1dd,#fffaf3)}.home-card.purple{background:linear-gradient(135deg,#f4edf9,#fffafe)}.home-card.blue{background:linear-gradient(135deg,#eaf4ff,#f8fcff)}.home-card.teal{background:linear-gradient(135deg,#e9f7f4,#fbfffc)}.home-card .bigicon{font-size:4.1rem;line-height:1;margin-bottom:18px;filter:drop-shadow(0 7px 10px rgba(0,0,0,.09))}.home-card h3{font-size:clamp(1.35rem,3.8vw,1.85rem);line-height:1.15;margin:0 0 10px;color:#0f1d2e}.home-card p{font-size:clamp(.98rem,2.9vw,1.12rem);line-height:1.4;margin:0 auto;color:#26323c;max-width:260px}.home-arrow{position:absolute;left:50%;bottom:20px;transform:translateX(-50%);width:48px;height:48px;border-radius:999px;background:rgba(255,255,255,.86);display:grid;place-items:center;font-size:2rem;box-shadow:0 8px 18px rgba(25,38,45,.12);color:#081c30}.alone-strip{display:flex;align-items:center;gap:18px;background:linear-gradient(90deg,#eaf5ed,#fbfcf6);border:1px solid rgba(111,151,125,.18);border-radius:24px;padding:20px 24px;margin:8px 0 8px;box-shadow:0 10px 24px rgba(25,38,45,.05)}.alone-strip .heart{font-size:2.4rem}.alone-strip b{display:block;font-size:1.22rem}.alone-strip span{display:block;color:#26323c;font-size:1rem;margin-top:2px}
+
+    .modal-backdrop{position:fixed;inset:0;z-index:60;background:rgba(14,25,32,.46);backdrop-filter:blur(8px);display:none;align-items:flex-end;justify-content:center;padding:14px}.modal-backdrop.open{display:flex}.modal{width:min(680px,100%);max-height:88vh;overflow:auto;background:var(--card);border:1px solid var(--line);border-radius:28px 28px 22px 22px;box-shadow:0 22px 70px rgba(0,0,0,.28);padding:16px;animation:modalIn .18s ease}.modal-head{display:flex;gap:10px;align-items:center;justify-content:space-between;margin-bottom:10px}.modal-title{display:flex;align-items:center;gap:10px}.modal-title .emoji{font-size:1.8rem}.modal-title h2{margin:0;font-size:1.25rem}.modal-title span{display:block;color:var(--muted);font-size:.92rem}.modal-close{border:0;background:#edf3ec;color:var(--blue);border-radius:999px;width:40px;height:40px;font-size:1.25rem;font-weight:900}.modal-body .lead{margin-top:0}.modal-body .cards{margin-top:10px}@keyframes modalIn{from{opacity:.4;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+    @media(max-width:680px){.app{padding-inline:18px}.home-hero{grid-template-columns:1.02fr .95fr;gap:8px;padding:22px 0 22px}.hero-art{display:flex}.home-hero h1{font-size:2.25rem;margin-bottom:8px}.home-hero h2{font-size:1.28rem;margin-bottom:12px}.home-hero p{font-size:.98rem;line-height:1.46}.home-title{margin:18px 0 12px;font-size:1.55rem}.home-choice-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-bottom:14px}.home-card{min-height:188px;padding:17px 12px 54px;border-radius:22px}.home-card .bigicon{font-size:3rem;margin-bottom:13px}.home-card h3{font-size:1.08rem;line-height:1.15;margin-bottom:7px}.home-card p{font-size:.82rem;line-height:1.32}.home-arrow{bottom:13px;width:40px;height:40px;font-size:1.65rem}.alone-strip{padding:16px 18px;margin-bottom:18px}.grid,.split,.topic-chooser{grid-template-columns:1fr}.tile{min-height:auto}.section{padding:17px 13px}}
+    @media(print){.bottomnav,.install,.nextbar,.subtabs{display:none!important}body{padding-bottom:0;background:white}.hero,.section,.tile,.card{box-shadow:none}.view{display:block!important}}
+  </style>
+</head>
+<body>
+  <button class="install" id="installBtn">Installér app</button>
+  <main class="app">
+    <section class="view active" id="view-home">
+      <div class="home-hero">
+        <div>
+          <h1>Velkommen 👋</h1>
+          <h2>Min Bipolar Guide</h2>
+          <p>Her kan du lære om bipolar lidelse, forstå symptomerne og få konkrete råd til at håndtere sygdommen i hverdagen.</p>
+        </div>
+        <div class="hero-art" aria-hidden="true"><img src="assets/hero-illustration.png" alt="" /></div>
+      </div>
+
+      <h2 class="home-title">Vælg et emne</h2>
+      <div class="home-choice-grid" aria-label="Genveje til faner">
+        <button class="home-card green" data-nav="learn"><span class="bigicon">🧠</span><div><h3>Lær</h3><p>Lær om bipolar lidelse, symptomer, typer og behandling.</p></div><span class="home-arrow">›</span></button>
+        <button class="home-card yellow" data-nav="help"><span class="bigicon">🛡️</span><div><h3>Hjælp dig selv</h3><p>Praktiske råd og strategier, der kan gøre hverdagen lettere.</p></div><span class="home-arrow">›</span></button>
+        <button class="home-card purple" data-nav="relatives"><span class="bigicon">👥</span><div><h3>Til pårørende</h3><p>Viden og råd til dig, der er pårørende eller tæt på.</p></div><span class="home-arrow">›</span></button>
+        <button class="home-card blue" data-nav="faq"><span class="bigicon">❓</span><div><h3>Spørgsmål og svar</h3><p>Få svar på de mest almindelige spørgsmål om bipolar lidelse.</p></div><span class="home-arrow">›</span></button>
+      </div>
+
+      <div class="alone-strip"><span class="heart">💚</span><div><b>Du er ikke alene</b><span>Med viden, støtte og de rette værktøjer kan livet blive bedre.</span></div></div>
+    </section>
+
+    <section class="view" id="view-learn">
+      <div class="section">
+        <h2>Lær om bipolar lidelse</h2>
+        <p class="lead">Vælg et emne. Hvert emne åbner som en kort side, så det ikke bliver en lang tekstmur.</p>
+        <div class="topic-chooser" data-group="learn">
+          <button class="topic-btn" data-sub="hvad"><span class="emoji">🧠</span><span>Hvad er det?<small>Grundforklaring</small></span></button>
+          <button class="topic-btn" data-sub="depression"><span class="emoji">📉</span><span>Depression<small>Nedtrykthed og lav energi</small></span></button>
+          <button class="topic-btn" data-sub="mani"><span class="emoji">📈</span><span>Hypomani/mani<small>Høj energi og tempo</small></span></button>
+          <button class="topic-btn" data-sub="blandet"><span class="emoji">🌪️</span><span>Blandet tilstand<small>Uro og mørke tanker</small></span></button>
+          <button class="topic-btn" data-sub="behandling"><span class="emoji">💊</span><span>Behandling<small>Medicin, viden og støtte</small></span></button>
+          <button class="topic-btn" data-sub="recovery"><span class="emoji">🌱</span><span>Recovery<small>Et godt liv med sygdommen</small></span></button>
+        </div>
+        <div class="topic-current learn-panel-source" id="learn-current"><span class="emoji">🧠</span><div><b>Hvad er det?</b><span>Grundforklaring</span></div></div>
+        <article class="subpanel learn-panel-source active" id="learn-hvad">
+          <p class="lead">Bipolar lidelse er en sygdom, hvor hjernen kan få svært ved at regulere humør, energi, aktivitet og søvn.</p>
+          <div class="cards"><div class="card"><h3>Ikke bare humørsvingninger</h3><p>Alle mennesker svinger i humør. Ved bipolar lidelse kan perioderne blive så kraftige, at de påvirker søvn, dømmekraft, arbejde, relationer og hverdagen.</p></div><div class="card"><h3>Forskellige faser</h3><p>Man kan have depressive perioder, hypomane/maniske perioder og stabile perioder. Nogle oplever også blandingstilstand.</p></div></div>
+          <div class="chips"><span class="chip">Depression</span><span class="chip">Stabil periode</span><span class="chip">Hypomani</span><span class="chip">Mani</span></div>
+        </article>
+        <article class="subpanel learn-panel-source" id="learn-depression">
+          <p class="lead">Depression kan føles som tunghed, tomhed, lav energi og tab af håb.</p>
+          <div class="split"><div class="card"><h3>Typiske tegn</h3><div class="list"><div class="item"><span>😴</span><div><b>Søvn ændrer sig</b>Man sover meget mere, meget mindre eller vågner tidligt.</div></div><div class="item"><span>🔋</span><div><b>Lav energi</b>Selv små ting kan føles uoverskuelige.</div></div><div class="item"><span>🚫</span><div><b>Mister lyst</b>Ting der plejer at give mening, føles ligegyldige.</div></div><div class="item"><span>👥</span><div><b>Trækker sig</b>Man orker ikke kontakt.</div></div></div></div><div class="card"><h3>Hvad hjælper ofte?</h3><div class="list"><div class="item"><span>📅</span><div><b>Små aftaler</b>Få realistiske opgaver. Ikke en perfekt plan.</div></div><div class="item"><span>🛏️</span><div><b>Fast døgnrytme</b>Stå op og gå i seng nogenlunde samme tid.</div></div><div class="item"><span>💬</span><div><b>Sig det højt</b>Kontakt behandler eller en pårørende ved forværring.</div></div></div></div></div>
+        </article>
+        <article class="subpanel learn-panel-source" id="learn-mani">
+          <p class="lead">Hypomani og mani kan starte som overskud. Det er derfor, det kan være svært at opdage i tide.</p>
+          <div class="split"><div class="card"><h3>Typiske tegn</h3><div class="list"><div class="item"><span>⚡</span><div><b>Mere energi</b>Man føler sig effektiv, stærk eller ustoppelig.</div></div><div class="item"><span>🌙</span><div><b>Mindre søvn</b>Man sover mindre, men føler sig ikke træt.</div></div><div class="item"><span>🗣️</span><div><b>Taler mere</b>Tankerne går hurtigt.</div></div><div class="item"><span>💸</span><div><b>Større risiko</b>Man kan bruge flere penge eller tage flere chancer.</div></div></div></div><div class="card"><h3>Hvorfor reagere?</h3><p>Fordi det kan udvikle sig. Jo tidligere man reagerer på mindre søvn, højere tempo og øget aktivitet, jo større chance er der for at bremse udviklingen.</p><br><p><b>Pårørende ser ofte ændringen først.</b> Det er værd at lytte.</p></div></div>
+        </article>
+        <article class="subpanel learn-panel-source" id="learn-blandet">
+          <p class="lead">Blandingstilstand betyder, at depressive symptomer og høj indre uro/energi kan være til stede samtidig.</p>
+          <div class="cards"><div class="card"><h3>Det kan være forvirrende</h3><p>Man kan føle sig nedtrykt og håbløs, men samtidig have uro, rastløshed, irritabilitet eller tankemylder.</p></div><div class="card"><h3>Tag det alvorligt</h3><p>Blandingstilstand kan være belastende og bør tages op med behandler, især hvis der kommer selvmordstanker eller voldsom uro.</p></div></div>
+        </article>
+        <article class="subpanel learn-panel-source" id="learn-behandling">
+          <p class="lead">Behandling handler ikke kun om medicin. Det handler om at forebygge nye episoder og gøre hverdagen mere stabil.</p>
+          <div class="cards"><div class="card"><h3>💊 Medicin</h3><p>Bruges ofte forebyggende. Stop ikke medicin uden aftale med læge.</p></div><div class="card"><h3>🧠 Viden</h3><p>Jo bedre man kender sygdommen, jo tidligere kan man reagere.</p></div><div class="card"><h3>👥 Støtte</h3><p>Behandler, familie og netværk kan hjælpe med at opdage ændringer.</p></div></div>
+        </article>
+        <article class="subpanel learn-panel-source" id="learn-recovery">
+          <p class="lead">Recovery betyder ikke nødvendigvis, at sygdommen aldrig fylder igen. Det betyder at kunne leve et godt og meningsfuldt liv.</p>
+          <div class="quote">Diagnosen er alvorlig. Men den er ikke hele personen.</div>
+          <div class="cards" style="margin-top:10px"><div class="card"><h3>Håb er ikke pynt</h3><p>Håb, relationer, mening og handlemuligheder er en vigtig del af at komme videre.</p></div></div>
+        </article>
+        <div class="nextbar"><button class="secondary" data-nav="home">← Hjem</button><button data-nav="help">Næste: Hjælp dig selv →</button></div>
+      </div>
+    </section>
+
+    <section class="view" id="view-help">
+      <div class="section">
+        <h2>Hvad kan jeg selv gøre?</h2>
+        <p class="lead">Du kan ikke bare tænke sygdommen væk. Men du kan lære, hvad der beskytter dig.</p>
+        <div class="cards"><div class="card"><h3>🛏️ Pas på søvnen</h3><p>Søvn er ikke bare velvære. Ved bipolar lidelse er ændret søvn ofte et tidligt tegn på, at noget er på vej.</p></div><div class="card"><h3>💊 Tag medicin som aftalt</h3><p>Medicin bruges ofte forebyggende. Målet er ikke at ændre din personlighed, men at mindske risikoen for nye episoder.</p></div><div class="card"><h3>🔥 Tag stress alvorligt</h3><p>Stress er ikke din skyld. Men høj belastning over tid kan øge risikoen for nye episoder.</p></div><div class="card"><h3>🍷 Vær forsigtig med alkohol og stoffer</h3><p>Alkohol, cannabis og andre stoffer kan forstyrre søvn, dømmekraft og behandling.</p></div><div class="card"><h3>👥 Brug andre mennesker</h3><p>Det er ikke svaghed at have brug for støtte. Det er sygdomsfornuft.</p></div></div>
+      </div>
+      <div class="section"><h2>Grøn, gul og rød fase</h2><div class="cards"><div class="phase green"><h3>Grøn fase – stabil</h3><p>Hold fast i rutiner.</p></div><div class="phase yellow"><h3>Gul fase – noget ændrer sig</h3><p>Reagér tidligt. Tal med en pårørende eller behandler.</p></div><div class="phase red"><h3>Rød fase – alvorligt</h3><p>Søg hjælp hurtigt ved tydelig forværring, selvmordstanker eller farlig adfærd.</p></div></div><div class="nextbar"><button class="secondary" data-nav="learn">← Lær</button><button data-nav="relatives">Næste: Pårørende →</button></div></div>
+    </section>
+
+    <section class="view" id="view-relatives">
+      <div class="section"><h2>Til pårørende</h2><p class="lead">Du skal ikke være behandler. Du skal være en rolig og tydelig støtte.</p><div class="split"><div class="card"><h3>Det hjælper ofte</h3><div class="list"><div class="item"><span>👂</span><div><b>Lyt først</b>Start med nysgerrighed frem for gode råd.</div></div><div class="item"><span>🧭</span><div><b>Hjælp med overblik</b>Små konkrete aftaler virker bedre end lange diskussioner.</div></div><div class="item"><span>🚩</span><div><b>Reagér på tidlige tegn</b>Især mindre søvn, højt tempo, isolation eller håbløshed.</div></div></div></div><div class="card"><h3>Det hjælper sjældent</h3><div class="list"><div class="item"><span>⚠️</span><div><b>Skældud</b>Det giver ofte modstand og skam.</div></div><div class="item"><span>🥊</span><div><b>Store diskussioner</b>Især under mani virker argumenter ofte dårligt.</div></div><div class="item"><span>🎭</span><div><b>At lade som ingenting</b>Tavshed ved tydelige faresignaler er ikke hjælpsomt.</div></div></div></div></div><div class="quote">Sig hellere: “Jeg kan se, at du sover mindre og virker mere presset. Skal vi kontakte nogen sammen?”</div><div class="nextbar"><button class="secondary" data-nav="help">← Hjælp</button><button data-nav="faq">Næste: FAQ →</button></div></div>
+    </section>
+
+    <section class="view" id="view-faq">
+      <div class="section"><h2>Spørgsmål og myter</h2><div class="cards"><div class="myth"><div class="bad">❌ <b>Myte:</b> Bipolar lidelse er bare almindelige humørsvingninger.</div><div class="good">✅ <b>Fakta:</b> Bipolar lidelse giver episoder, der kan påvirke søvn, energi, dømmekraft og funktion.</div></div><div class="myth"><div class="bad">❌ <b>Myte:</b> Mani er bare at være glad.</div><div class="good">✅ <b>Fakta:</b> Mani kan være alvorligt og føre til store konsekvenser.</div></div><div class="myth"><div class="bad">❌ <b>Myte:</b> Medicin ændrer min personlighed.</div><div class="good">✅ <b>Fakta:</b> Målet med medicin er at forebygge episoder og hjælpe dig med at fungere som dig selv.</div></div></div><div class="cards" style="margin-top:12px"><div class="faq"><button>Kan jeg få et almindeligt liv?</button><div class="answer">Ja, mange lever gode og meningsfulde liv med bipolar lidelse. Det kræver ofte viden, behandling, støtte og opmærksomhed på egne tidlige tegn.</div></div><div class="faq"><button>Kan jeg arbejde?</button><div class="answer">Mange kan arbejde. Nogle har brug for tilpasninger, pauser, stabil døgnrytme eller perioder med mindre belastning.</div></div><div class="faq"><button>Skal jeg fortælle andre om diagnosen?</button><div class="answer">Det bestemmer du. Det kan være en fordel, at få udvalgte mennesker ved, hvilke tegn de skal reagere på.</div></div><div class="faq"><button>Hvornår skal jeg søge hjælp?</button><div class="answer">Søg hjælp ved tydelig forværring, mindre søvn over flere dage, selvmordstanker, psykotiske symptomer, ukontrollerbar uro eller hvis pårørende er alvorligt bekymrede.</div></div></div><p class="small">Ved akut fare: kontakt psykiatrisk akutmodtagelse, lægevagt eller 112.</p><div class="nextbar"><button class="secondary" data-nav="home">← Hjem</button><button data-nav="learn">Start forfra →</button></div></div>
+    </section>
+  </main>
+
+  <div class="modal-backdrop" id="topicModal" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="topicModalTitle">
+      <div class="modal-head">
+        <div class="modal-title" id="topicModalTitle"><span class="emoji">🧠</span><div><h2>Emne</h2><span>Læs kort forklaring</span></div></div>
+        <button class="modal-close" id="topicModalClose" aria-label="Luk">×</button>
+      </div>
+      <div class="modal-body" id="topicModalBody"></div>
+    </div>
+  </div>
+
+  <nav class="bottomnav" aria-label="Bundmenu">
+    <div class="navinner">
+      <button class="active" data-nav="home"><span>🏠</span>Hjem</button>
+      <button data-nav="learn"><span>🧠</span>Lær</button>
+      <button data-nav="help"><span>🛡️</span>Hjælp</button>
+      <button data-nav="relatives"><span>👥</span>Pårørende</button>
+      <button data-nav="faq"><span>❓</span>FAQ</button>
+    </div>
+  </nav>
+
+  <script>
+    const views=[...document.querySelectorAll('.view')];
+    const navBtns=[...document.querySelectorAll('[data-nav]')];
+    function showView(name){
+      views.forEach(v=>v.classList.toggle('active',v.id==='view-'+name));
+      document.querySelectorAll('.navinner button').forEach(b=>b.classList.toggle('active',b.dataset.nav===name));
+      window.scrollTo({top:0,behavior:'smooth'});
+      location.hash=name;
+    }
+    navBtns.forEach(btn=>btn.addEventListener('click',()=>{
+      showView(btn.dataset.nav);
+      if(btn.dataset.sub) setTimeout(()=>openTopicModal(btn.dataset.sub),120);
+    }));
+    const topicMeta={
+      hvad:['🧠','Hvad er det?','Grundforklaring'], depression:['📉','Depression','Nedtrykthed og lav energi'], mani:['📈','Hypomani/mani','Høj energi og tempo'], blandet:['🌪️','Blandet tilstand','Uro og mørke tanker'], behandling:['💊','Behandling','Medicin, viden og støtte'], recovery:['🌱','Recovery','Et godt liv med sygdommen']
+    };
+    const topicModal=document.getElementById('topicModal');
+    const topicModalTitle=document.getElementById('topicModalTitle');
+    const topicModalBody=document.getElementById('topicModalBody');
+    const topicModalClose=document.getElementById('topicModalClose');
+    function openTopicModal(sub){
+      const source=document.getElementById('learn-'+sub);
+      if(!source||!topicMeta[sub]) return;
+      topicModalTitle.innerHTML=`<span class="emoji">${topicMeta[sub][0]}</span><div><h2>${topicMeta[sub][1]}</h2><span>${topicMeta[sub][2]}</span></div>`;
+      topicModalBody.innerHTML=source.innerHTML;
+      topicModal.classList.add('open');
+      topicModal.setAttribute('aria-hidden','false');
+      document.body.style.overflow='hidden';
+    }
+    function closeTopicModal(){
+      topicModal.classList.remove('open');
+      topicModal.setAttribute('aria-hidden','true');
+      document.body.style.overflow='';
+    }
+    topicModalClose.addEventListener('click',closeTopicModal);
+    topicModal.addEventListener('click',e=>{if(e.target===topicModal) closeTopicModal();});
+    document.addEventListener('keydown',e=>{if(e.key==='Escape') closeTopicModal();});
+    document.querySelectorAll('.topic-btn').forEach(btn=>btn.addEventListener('click',()=>openTopicModal(btn.dataset.sub)));
+    document.querySelectorAll('.faq button').forEach(btn=>btn.addEventListener('click',()=>btn.parentElement.classList.toggle('open')));
+    const initial=(location.hash||'#home').replace('#',''); if(['home','learn','help','relatives','faq'].includes(initial)) showView(initial);
+    let deferredPrompt; const installBtn=document.getElementById('installBtn');
+    window.addEventListener('beforeinstallprompt',e=>{e.preventDefault(); deferredPrompt=e; installBtn.style.display='block';});
+    installBtn.addEventListener('click',async()=>{if(!deferredPrompt)return; deferredPrompt.prompt(); await deferredPrompt.userChoice; deferredPrompt=null; installBtn.style.display='none';});
+    if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js'));}
+  </script>
+</body>
+</html>
